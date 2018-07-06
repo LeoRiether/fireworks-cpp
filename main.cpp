@@ -57,10 +57,11 @@ void update(std::vector<Particle>& p) {
         // Explode the firework
         p[i].fuse = -0xFF; // Set the fuse to -0xFF if it already exploded
         int n = randint(6, 17); // Number of exploded particles
-        float v = randfloat(250, 400);// Explosion velocity
+        float v0 = randfloat(250, 400);// Explosion velocity
         float fuse = randfloat(1.25, 1.5);
         float t0 = randfloat(0, 2.0*M_PI); // Angle of the first firework
         float step = 2.0f*M_PI/(float)n; // How much the angle should increase at every iteration
+        for (float v = v0; v > 0; v -= 75) {
         for (float t = t0; t < 2*M_PI+t0; t += step) {
           p.push_back(Particle(
             p[i].x, p[i].y,
@@ -69,6 +70,7 @@ void update(std::vector<Particle>& p) {
             p[i].color, false
           ));
           size++; // safer I guess
+        }
         }
       } else {
         // elementErased = true;

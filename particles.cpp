@@ -57,7 +57,6 @@ public:
     if (this->fuse == -0xFF) return;
     SDL_SetRenderDrawColor(r, this->color[2], this->color[1], this->color[0], 0xFF);
     SDL_RenderFillRect(r, &this->rect);
-    // SDL_RenderDrawPoint(r, this->x, this->y);
   }
 
   void setColor(uint32_t* color) {
