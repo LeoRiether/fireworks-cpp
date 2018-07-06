@@ -106,7 +106,7 @@ int main(int argc, char* args[])
 		std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
     quit = true;
   } else {
-		window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+		window = SDL_CreateWindow( "SDL Fireworks", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, 0);
 		if (window == NULL || renderer == NULL) {
 			std::cout << "Window/Renderer could not be created! SDL_Error: " << SDL_GetError() << std::endl;
