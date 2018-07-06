@@ -41,8 +41,8 @@ public:
     if (this->explodes)
       this->vy += G*dt;
     else {
-      this->vy *= .98;
-      this->vx *= .98;
+      this->vy /= 92*dt;
+      this->vx /= 92*dt;
     }
 
     this->x += this->vx*dt;

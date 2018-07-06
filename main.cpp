@@ -83,8 +83,13 @@ void update(std::vector<Particle>& p) {
     if(!elementErased) ++i;
   }
 
-  // meh
-  if (p.size() > 950) p.clear();
+  if (p.size() > 950) {
+    size = p.size();
+    for (std::vector<Particle>::size_type i = 0; i < size; ) {
+      if (p[i].fuse == -0xFF) { p.erase(p.begin()+i); size--; }
+      else i++;
+    }
+  }
 
 }
 
