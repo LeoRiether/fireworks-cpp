@@ -10,7 +10,7 @@
 #include <algorithm>
 
 #define G 220
-#define PARTICLE_SIZE 6 
+#define PARTICLE_SIZE 2 
 
 class Particle {
 private:
@@ -38,17 +38,22 @@ public:
   }
 
   void update(const float dt) {
+    this->fuse -= dt;
+
     if (this->explodes)
       this->vy += G*dt;
     else {
-      this->vy /= 92*dt;
-      this->vx /= 92*dt;
+      this->vy += G*dt;
+      // this->vy /= 92*dt;
+      // this->vx /= 92*dt;
+      this->vy *= .98;
+      this->vx *= .98;
+      // if (sqrt(this->vy*this->vy+this->vx*this->vx) <= 100) this->fuse = -0xFF;
     }
 
     this->x += this->vx*dt;
     this->y += this->vy*dt;
 
-    fuse -= dt;
 
     this->rect.x = this->x; this->rect.y = this->y;
   }

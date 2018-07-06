@@ -61,16 +61,27 @@ void update(std::vector<Particle>& p) {
         float fuse = randfloat(1.25, 1.5);
         float t0 = randfloat(0, 2.0*M_PI); // Angle of the first firework
         float step = 2.0f*M_PI/(float)n; // How much the angle should increase at every iteration
-        for (float v = v0; v > 0; v -= 75) {
-        for (float t = t0; t < 2*M_PI+t0; t += step) {
+        // for (float v = v0; v > 0; v -= 75) {
+        // for (float t = t0; t < 2*M_PI+t0; t += step) {
+        //   p.push_back(Particle(
+        //     p[i].x, p[i].y,
+        //     v*cos(t), v*sin(t),
+        //     fuse,
+        //     p[i].color, false
+        //   ));
+        //   size++; // safer I guess
+        // }
+        // }
+        n = randint(100, 200);
+        for (int j = 0; j < n; j++) {
+          v0 = randfloat(-400, 400);
+          t0 = randfloat(0, 2.0*M_PI);
           p.push_back(Particle(
             p[i].x, p[i].y,
-            v*cos(t), v*sin(t),
-            fuse,
-            p[i].color, false
+            v0*cos(t0), v0*sin(t0),
+            fuse, p[i].color, false
           ));
-          size++; // safer I guess
-        }
+          size++;
         }
       } else {
         // elementErased = true;
@@ -148,7 +159,7 @@ int main(int argc, char* args[])
       ));
       particles.back().setColor(colors + randint(0, PARTICLE_COLORS_SIZE));
       fireworkTimer = currentTime;
-      fireworkDelay = randint(600, 1000);
+      fireworkDelay = randint(500, 800);
     }
 
     SDL_Delay(10);
